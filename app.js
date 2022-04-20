@@ -1,10 +1,18 @@
+
+    //Takes all elements with the class gradeContainer
+
+
+
 //Fetch the local JSON file
 fetch("./data.json")
+
     .then(function(resp){
         return resp.json();
     })
+
     //Creates the Data function that will be called all along
     .then(function(data){
+
         //Creates the loop that will create all the elements, using the number of object in data.
         for(let i = 0; i < data.length; i++){ 
             //Variable to create a section each time a loop is initiated
@@ -23,8 +31,25 @@ fetch("./data.json")
             + data[i].title + 
             '</h2><span class="">...</span></div><p class="">' 
             + data[i].timeframes.daily.current +
-            'hrs<span class="">Last day - ' 
+            'hrs<span class="card-period">Last day'
             + data[i].timeframes.daily.previous + 
-            '</span></p></div>')
+            '</span></p></div>');
         }
     })
+  
+    // Par defaut : day en texe dans une span. Au clic changement innerText pour ce qui est cliqué
+let cardPeriod= document.querySelectorAll('.card-period');
+console.log(cardPeriod);
+    const gradeContainers = document.querySelectorAll('.report-period');
+    let idElt = '';
+    gradeContainers.forEach((gradeContainer) => {
+    gradeContainer.addEventListener('click', () => {
+    // id de l'element
+    idElt = gradeContainer.getAttribute('id');
+    // Adds the value of idElt to gradeDisplay HTML
+    gradeContainers.innerText = idElt;
+    console.log(idElt);
+    });
+    })
+
+    //voir pourquoi .card-period change pas au click
