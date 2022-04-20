@@ -27,3 +27,4 @@ fetch("./data.json")
         para.innerText = data[1].title;
         document.body.appendChild(para);
     })
+
