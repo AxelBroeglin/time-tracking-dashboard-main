@@ -2,7 +2,6 @@
     //Takes all elements with the class gradeContainer
 
 
-
 //Fetch the local JSON file
 fetch("./data.json")
     .then(function(resp){
@@ -29,23 +28,17 @@ fetch("./data.json")
             + data[i].title + 
             '</h2><span class="">...</span></div><p class="">' 
             + data[i].timeframes.daily.current +
-            'hrs<span class="last">Last<span class="card-period">day</span> '
+            'hrs<span class="last">Last<span class="card-period"> day </span> '
             + data[i].timeframes.daily.previous + 
             '</span></p></div>');
         }
- 
-        let cardPeriods= document.querySelectorAll('.card-period');
-      
-            for (const cardPeriod of cardPeriods) {
-                               // Par defaut : day en texe dans une span. Au clic changement innerText pour ce qui est cliqué
-                               const reportPeriods = document.querySelectorAll('.report-period');
-                           let idElt = '';
-                reportPeriods.addEventListener('click', () => {
-                    // id de l'element
-                    idElt = reportPeriod.getAttribute('id');
-                    // Adds the value of idElt to gradeDisplay HTML
-                    cardPeriod.innerHTML = idElt;
-                    console.log(idElt);})                }
-            })
+    })
+    .then(function(test){
+        let cardPeriod = document.querySelectorAll('.card-period');
+        console.log(cardPeriod);
+        cardPeriod.classList.remove('card-period');
+        cardPeriod.classList.add('card-period-yellow');
+        console.log(cardPeriod);
+    })
 
 
