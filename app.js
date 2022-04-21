@@ -28,17 +28,27 @@ fetch("./data.json")
             + data[i].title + 
             '</h2><span class="">...</span></div><p class="">' 
             + data[i].timeframes.daily.current +
-            'hrs<span class="last">Last<span class="card-period"> day </span> '
+            'hrs<span class="last">Last <span class="card-period"> day </span> '
             + data[i].timeframes.daily.previous + 
             '</span></p></div>');
         }
     })
     .then(function(test){
         let cardPeriod = document.querySelectorAll('.card-period');
-        console.log(cardPeriod);
-        cardPeriod.classList.remove('card-period');
-        cardPeriod.classList.add('card-period-yellow');
-        console.log(cardPeriod);
+        let reportPeriod = document.querySelectorAll('.report-period');
+        //QuerySelectorAll creates a NodeList, not an array. It needs a for of loop to be used
+        //Isolates periods from each other...
+        for(let period of reportPeriod){
+            //to attach an event listener
+            period.addEventListener('click', () => {
+                //Retrieves the id
+                idElt = period.getAttribute('id');
+                //...to pass it as innerHTML
+                //For of to go through the NodeList
+                for (let item of cardPeriod) {
+                    item.innerHTML = idElt;
+                  }
+            })
+        }
+   
     })
-
-
