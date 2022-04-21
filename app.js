@@ -5,11 +5,9 @@
 
 //Fetch the local JSON file
 fetch("./data.json")
-
     .then(function(resp){
         return resp.json();
     })
-
     //Creates the Data function that will be called all along
     .then(function(data){
 
@@ -31,25 +29,23 @@ fetch("./data.json")
             + data[i].title + 
             '</h2><span class="">...</span></div><p class="">' 
             + data[i].timeframes.daily.current +
-            'hrs<span class="card-period">Last day'
+            'hrs<span class="last">Last<span class="card-period">day</span> '
             + data[i].timeframes.daily.previous + 
             '</span></p></div>');
         }
-    })
-  
-    // Par defaut : day en texe dans une span. Au clic changement innerText pour ce qui est cliqué
-let cardPeriod= document.querySelectorAll('.card-period');
-console.log(cardPeriod);
-    const gradeContainers = document.querySelectorAll('.report-period');
-    let idElt = '';
-    gradeContainers.forEach((gradeContainer) => {
-    gradeContainer.addEventListener('click', () => {
-    // id de l'element
-    idElt = gradeContainer.getAttribute('id');
-    // Adds the value of idElt to gradeDisplay HTML
-    gradeContainers.innerText = idElt;
-    console.log(idElt);
-    });
-    })
+ 
+        let cardPeriods= document.querySelectorAll('.card-period');
+      
+            for (const cardPeriod of cardPeriods) {
+                               // Par defaut : day en texe dans une span. Au clic changement innerText pour ce qui est cliqué
+                               const reportPeriods = document.querySelectorAll('.report-period');
+                           let idElt = '';
+                reportPeriods.addEventListener('click', () => {
+                    // id de l'element
+                    idElt = reportPeriod.getAttribute('id');
+                    // Adds the value of idElt to gradeDisplay HTML
+                    cardPeriod.innerHTML = idElt;
+                    console.log(idElt);})                }
+            })
 
-    //voir pourquoi .card-period change pas au click
+
