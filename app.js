@@ -1,7 +1,3 @@
-
-    //Takes all elements with the class gradeContainer
-
-
 //Fetch the local JSON file
 fetch("./data.json")
     .then(function(resp){
@@ -10,37 +6,6 @@ fetch("./data.json")
     //Creates the Data function that will be called all along
     .then(function(data){
 
-        let currentPeriod = document.getElementsByClassName('current');
-        console.log(currentPeriod);
-        
-
-        let day = document.getElementById('day');
-        let week = document.getElementById('week');
-        let month = document.getElementById('month');
-   
-            week.addEventListener('click', () => {
-                for(let i = 0; i < data.length; i++){ 
-                let currentTime = data[i].timeframes.weekly.current;
-                //console.log(currentPeriod);
-                
-                //retrouve le temps correspondant et l'attribue a la variable
-                //change le temps par la valeur de la variable
-                let arrayCurrent = Array.from(currentPeriod);
-                for (let truc of currentPeriod) {
-                    truc.innerText = currentTime;
-                  }
-                
-                
-                
-                //Retrieves the id
-                // idElt = period.getAttribute('id');
-                // //...to pass it as innerHTML
-                // //For of to go through the NodeList
-                // for (let item of cardPeriod) {
-                //     item.innerHTML = idElt;
-                //   }
-            }
-        })
         //Creates the loop that will create all the elements, using the number of object in data.
         for(let i = 0; i < data.length; i++){ 
             //Variable to create a section each time a loop is initiated
@@ -63,10 +28,9 @@ fetch("./data.json")
             + data[i].timeframes.daily.previous + 
             '</span></span></p></div>');
         }
-    })
-    .then(function(test){
         let cardPeriod = document.querySelectorAll('.card-period');
         let reportPeriod = document.querySelectorAll('.report-period');
+
         //QuerySelectorAll creates a NodeList, not an array. It needs a for of loop to be used
         //Isolates periods from each other...
         for(let period of reportPeriod){
@@ -78,7 +42,36 @@ fetch("./data.json")
                 //For of to go through the NodeList
                 for (let item of cardPeriod) {
                     item.innerHTML = idElt;
-                  }
+                }
+                //idElt va servir a faire correspondre le click sur la période avec les valeurs idoines du fichier json
+                for(let i = 0; i < data.length; i++){ 
+                    let currentDailyHours = data[i].timeframes.daily.current;
+                    let currentWeeklyHours = data[i].timeframes.weekly.current;
+                    let currentMonthlyHours = data[i].timeframes.monthly.current;
+
+                    //Maintenant il faut faire changer les valeurs par celles amenées du JSON via le click.
+                    let currentPeriod = document.querySelectorAll('.current');
+                    console.log(currentPeriod.innerhtml)
+                    for (let tutu of currentPeriod){
+                        //renvoie les bonnes valeurs
+                        //console.log(tutu.innerHTML);
+                        if (idElt == 'day'){
+                            //faut il faire une boucle for of pour currentPeriod à chaque if ?
+                            currentPeriod.innerHTML = currentDailyHours.innerHTML; 
+                        }
+                        else if (idElt == 'week'){
+                            //renvoie undefined
+                            tutu.innerHTML = currentWeeklyHours.innerHTML; 
+                        }
+                        else {
+                            currentPeriod.innerHTML = currentMonthlyHours.innerHTML;                         
+                        }
+                    }
+                   
+                }
             })
         }
+    })
+    .then(function(test){
+       
         })
