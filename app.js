@@ -10,6 +10,37 @@ fetch("./data.json")
     //Creates the Data function that will be called all along
     .then(function(data){
 
+        let currentPeriod = document.getElementsByClassName('current');
+        console.log(currentPeriod);
+        
+
+        let day = document.getElementById('day');
+        let week = document.getElementById('week');
+        let month = document.getElementById('month');
+   
+            week.addEventListener('click', () => {
+                for(let i = 0; i < data.length; i++){ 
+                let currentTime = data[i].timeframes.weekly.current;
+                //console.log(currentPeriod);
+                
+                //retrouve le temps correspondant et l'attribue a la variable
+                //change le temps par la valeur de la variable
+                let arrayCurrent = Array.from(currentPeriod);
+                for (let truc of currentPeriod) {
+                    truc.innerText = currentTime;
+                  }
+                
+                
+                
+                //Retrieves the id
+                // idElt = period.getAttribute('id');
+                // //...to pass it as innerHTML
+                // //For of to go through the NodeList
+                // for (let item of cardPeriod) {
+                //     item.innerHTML = idElt;
+                //   }
+            }
+        })
         //Creates the loop that will create all the elements, using the number of object in data.
         for(let i = 0; i < data.length; i++){ 
             //Variable to create a section each time a loop is initiated
@@ -26,11 +57,11 @@ fetch("./data.json")
             card.insertAdjacentHTML(`afterbegin`, 
             '<div class="" id=""><div><h2 class="">' 
             + data[i].title + 
-            '</h2><span class="">...</span></div><p class="">' 
+            '</h2><span class="">...</span></div><p class=""><span class="current">' 
             + data[i].timeframes.daily.current +
-            'hrs<span class="last">Last <span class="card-period"> day </span> '
+            '</span>hrs<span class="last">Last <span class="card-period"> day </span> <span class="previous-period">'
             + data[i].timeframes.daily.previous + 
-            '</span></p></div>');
+            '</span></span></p></div>');
         }
     })
     .then(function(test){
@@ -50,5 +81,4 @@ fetch("./data.json")
                   }
             })
         }
-   
-    })
+        })
