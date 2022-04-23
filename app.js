@@ -57,16 +57,17 @@ fetch("./data.json")
                         if (idElt == 'day'){
                             currentPeriod.innerHTML = data[i].timeframes.daily.current;
                             console.log(currentPeriod.innerHTML);
+                            
+
                         }
                         else if (idElt == 'week'){
                             currentPeriod.innerHTML = data[i].timeframes.weekly.current;
                             console.log(currentPeriod.innerHTML);
+                            console.log(data[i].timeframes.weekly.current);
                         }
                         else {
-                            for(let i = 0; i < data.length; i++){
-                                currentPeriod.innerHTML = data[i].timeframes.monthly.current;
-                            }
-                            console.log(currentPeriod);
+                            currentPeriod.innerHTML = data[i].timeframes.monthly.current;
+                            console.log(currentPeriod.innerHTML);
                             console.log(data[i].timeframes.monthly.current);
                                 // currentPeriod.innerText = currentMonthlyHours;
                                 // console.log(currentPeriod);
