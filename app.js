@@ -5,7 +5,7 @@ fetch("./data.json")
     })
     //Creates the Data function that will be called all along
     .then(function(data){
-        let weekee = data;
+
         //Creates the loop that will create all the elements, using the number of object in data.
         for(let i = 0; i < data.length; i++){ 
             //Variable to create a section each time a loop is initiated
@@ -30,8 +30,8 @@ fetch("./data.json")
 
             let cardPeriod = document.querySelectorAll('.card-period');
             let reportPeriod = document.querySelectorAll('.report-period');
-            let currentPeriod = document.getElementsByClassName('current');
-
+            let currentPeriod = document.querySelectorAll('.current');
+            //let btnsArr = Array.from(btns);
             for(let period of reportPeriod){
                 //to attach an event listener
                 period.addEventListener('click', () => {
@@ -63,8 +63,9 @@ fetch("./data.json")
                             console.log(currentPeriod.innerHTML);
                         }
                         else {
-                            currentPeriod.innerHTML = data[i].timeframes.monthly.current;
-                            console.log(currentPeriod.innerHTML);
+                            currentPeriod = ' ' + data[i].timeframes.monthly.current;
+                            console.log(currentPeriod);
+                            console.log(data[i].timeframes.monthly.current);
                                 // currentPeriod.innerText = currentMonthlyHours;
                                 // console.log(currentPeriod);
                         }   
