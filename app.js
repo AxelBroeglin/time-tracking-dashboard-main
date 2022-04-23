@@ -7,7 +7,7 @@ fetch("./data.json")
     .then(function(data){
 
         //Creates the loop that will create all the elements, using the number of object in data.
-        for(let i = 0; i < data.length; i++){ 
+        for(let i = 0; i < data.length; i++){
             //Variable to create a section each time a loop is initiated
             const card = document.createElement("section");
             //'Self care' is 2 words, can't pass as a class, so we split the space, and call the first entry of the array
@@ -63,7 +63,9 @@ fetch("./data.json")
                             console.log(currentPeriod.innerHTML);
                         }
                         else {
-                            currentPeriod = ' ' + data[i].timeframes.monthly.current;
+                            for(let i = 0; i < data.length; i++){
+                                currentPeriod.innerHTML = data[i].timeframes.monthly.current;
+                            }
                             console.log(currentPeriod);
                             console.log(data[i].timeframes.monthly.current);
                                 // currentPeriod.innerText = currentMonthlyHours;
