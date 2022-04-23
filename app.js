@@ -18,7 +18,6 @@ fetch("./data.json")
             //Places the loop at the end of Main
             document.getElementById('main-container').appendChild(card);
             //Creates the HTML elements + the looped objects from JSON.
-            //Will need to be updated with the Daily, Weekly or Monthly registered from the click on the button on the page (so data[i].timeframes.xxx + Last xxx)
             card.insertAdjacentHTML(`afterbegin`, 
             '<div class="" id=""><div><h2 class="">' 
             + data[i].title + 
@@ -31,7 +30,7 @@ fetch("./data.json")
             let cardPeriod = document.querySelectorAll('.card-period');
             let reportPeriod = document.querySelectorAll('.report-period');
             let currentPeriod = document.querySelectorAll('.current');
-            //let btnsArr = Array.from(btns);
+
             for(let period of reportPeriod){
                 //to attach an event listener
                 period.addEventListener('click', () => {
