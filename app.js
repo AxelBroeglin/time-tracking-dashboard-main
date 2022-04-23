@@ -5,7 +5,7 @@ fetch("./data.json")
     })
     //Creates the Data function that will be called all along
     .then(function(data){
-
+        let weekee = data;
         //Creates the loop that will create all the elements, using the number of object in data.
         for(let i = 0; i < data.length; i++){ 
             //Variable to create a section each time a loop is initiated
@@ -27,51 +27,57 @@ fetch("./data.json")
             '</span>hrs<span class="last">Last <span class="card-period"> day </span> <span class="previous-period">'
             + data[i].timeframes.daily.previous + 
             '</span></span></p></div>');
-        }
-        let cardPeriod = document.querySelectorAll('.card-period');
-        let reportPeriod = document.querySelectorAll('.report-period');
+
+            let cardPeriod = document.querySelectorAll('.card-period');
+            let reportPeriod = document.querySelectorAll('.report-period');
+            let currentPeriod = document.getElementsByClassName('current');
+
+            for(let period of reportPeriod){
+                //to attach an event listener
+                period.addEventListener('click', () => {
+                    //Retrieves the id
+                    idElt = period.getAttribute('id');
+                    //...to pass it as innerHTML
+                    //For of to go through the NodeList
+                    for (let item of cardPeriod) {
+                        item.innerHTML = idElt;
+                    }
+
+                    //Retrieves all the span.current
+                    //console.log(currentPeriod);
+                    //idElt va servir a faire correspondre le click sur la période avec les valeurs idoines du fichier json
+                    // let currentDailyHours = data[i].timeframes.daily.current;
+                    // let currentWeeklyHours = data[i].timeframes.weekly.current;
+                    // let currentMonthlyHours = data[i].timeframes.monthly.current;
+                    //console.log(currentWeeklyHours);
+                    //Maintenant il faut faire changer les valeurs par celles amenées du JSON via le click.
+
+
+                        //renvoie les bonnes valeurs
+                        if (idElt == 'day'){
+                            currentPeriod.innerHTML = data[i].timeframes.daily.current;
+                            console.log(currentPeriod.innerHTML);
+                        }
+                        else if (idElt == 'week'){
+                            currentPeriod.innerHTML = data[i].timeframes.weekly.current;
+                            console.log(currentPeriod.innerHTML);
+                        }
+                        else {
+                            currentPeriod.innerHTML = data[i].timeframes.monthly.current;
+                            console.log(currentPeriod.innerHTML);
+                                // currentPeriod.innerText = currentMonthlyHours;
+                                // console.log(currentPeriod);
+                        }   
+                })
+
 
         //QuerySelectorAll creates a NodeList, not an array. It needs a for of loop to be used
         //Isolates periods from each other...
-        for(let period of reportPeriod){
-            //to attach an event listener
-            period.addEventListener('click', () => {
-                //Retrieves the id
-                idElt = period.getAttribute('id');
-                //...to pass it as innerHTML
-                //For of to go through the NodeList
-                for (let item of cardPeriod) {
-                    item.innerHTML = idElt;
-                }
-                //idElt va servir a faire correspondre le click sur la période avec les valeurs idoines du fichier json
-                for(let i = 0; i < data.length; i++){ 
-                    let currentDailyHours = data[i].timeframes.daily.current;
-                    let currentWeeklyHours = data[i].timeframes.weekly.current;
-                    let currentMonthlyHours = data[i].timeframes.monthly.current;
-
-                    //Maintenant il faut faire changer les valeurs par celles amenées du JSON via le click.
-                    let currentPeriod = document.querySelectorAll('.current');
-                    console.log(currentPeriod.innerhtml)
-                    for (let tutu of currentPeriod){
-                        //renvoie les bonnes valeurs
-                        //console.log(tutu.innerHTML);
-                        if (idElt == 'day'){
-                            //faut il faire une boucle for of pour currentPeriod à chaque if ?
-                            currentPeriod.innerHTML = currentDailyHours.innerHTML; 
-                        }
-                        else if (idElt == 'week'){
-                            //renvoie undefined
-                            tutu.innerHTML = currentWeeklyHours.innerHTML; 
-                        }
-                        else {
-                            currentPeriod.innerHTML = currentMonthlyHours.innerHTML;                         
-                        }
-                    }
-                   
-                }
-            })
+      
+                // for(let i = 0; i < data.length; i++){ 
+                //     //console.log(data);
+                                   
+                // }
+            }
         }
     })
-    .then(function(test){
-       
-        })
