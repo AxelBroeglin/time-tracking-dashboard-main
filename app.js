@@ -21,9 +21,9 @@ fetch("./data.json")
             card.insertAdjacentHTML(`afterbegin`, 
             '<div class="content" id=""><div class="header"><h2 class="">' 
             + data[i].title + 
-            '</h2><span class="">...</span></div><p class="current-hours"><span class="current">' 
+            '</h2><span class="">...</span></div><p class="current-hours"><span class="current-hours-count"><span class="current">' 
             + data[i].timeframes.daily.current +
-            '</span>hrs<span class="last">Last <span class="card-period"> day </span> <span class="previous-period">- '
+            '</span>hrs</span><span class="last">Last <span class="card-period"> day </span> <span class="previous-period">- '
             + data[i].timeframes.daily.previous + 
             'hrs</span></span></p></div>');
 
