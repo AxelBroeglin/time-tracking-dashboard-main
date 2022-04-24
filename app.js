@@ -19,13 +19,13 @@ fetch("./data.json")
             document.getElementById('main').appendChild(card);
             //Creates the HTML elements + the looped objects from JSON.
             card.insertAdjacentHTML(`afterbegin`, 
-            '<div class="content" id=""><div><h2 class="">' 
+            '<div class="content" id=""><div class="header"><h2 class="">' 
             + data[i].title + 
-            '</h2><span class="">...</span></div><p class=""><span class="current">' 
+            '</h2><span class="">...</span></div><p class="current-hours"><span class="current">' 
             + data[i].timeframes.daily.current +
-            '</span>hrs<span class="last">Last <span class="card-period"> day </span> <span class="previous-period">'
+            '</span>hrs<span class="last">Last <span class="card-period"> day </span> <span class="previous-period">- '
             + data[i].timeframes.daily.previous + 
-            '</span></span></p></div>');
+            'hrs</span></span></p></div>');
 
             let cardPeriod = document.querySelectorAll('.card-period');
             let reportPeriod = document.querySelectorAll('.report-period');
@@ -36,11 +36,24 @@ fetch("./data.json")
                 period.addEventListener('click', () => {
                     //Retrieves the id
                     idElt = period.getAttribute('id');
+                    reportPeriod.forEach((period) => {
+                        period.classList.remove('active');
+                      });
+                      if (period.classList.contains("active")) {
+                        period.classList.remove("active");
+                      }
+                      else {
+                        period.classList.add("active");
+                      }
+                  
                     //...to pass it as innerHTML
                     //For of to go through the NodeList
                     for (let item of cardPeriod) {
                         item.innerHTML = idElt;
-                    }
+                        };
+
+                    
+                    
 
                     //Retrieves all the span.current
                     //console.log(currentPeriod);
@@ -56,8 +69,6 @@ fetch("./data.json")
                         if (idElt == 'day'){
                             currentPeriod.innerHTML = data[i].timeframes.daily.current;
                             console.log(currentPeriod.innerHTML);
-                            
-
                         }
                         else if (idElt == 'week'){
                             currentPeriod.innerHTML = data[i].timeframes.weekly.current;
@@ -74,8 +85,8 @@ fetch("./data.json")
                 })
 
 
-        //QuerySelectorAll creates a NodeList, not an array. It needs a for of loop to be used
-        //Isolates periods from each other...
+                     //QuerySelectorAll creates a NodeList, not an array. It needs a for of loop to be used
+                        //Isolates periods from each other...
       
                 // for(let i = 0; i < data.length; i++){ 
                 //     //console.log(data);
