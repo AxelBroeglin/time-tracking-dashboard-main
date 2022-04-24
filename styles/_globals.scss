@@ -77,3 +77,93 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+body{
+  background-color: hsl(226, 43%, 10%);
+  color: white;
+  position: absolute;
+}
+
+#main{
+  position: relative;
+  top: 25vh;
+  left: 10vw;
+  width: 80vw;
+  height: 50vh;
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 1em;
+}
+
+.main_report{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: 3;
+  grid-column-end: 2;
+  background-color: hsl(235, 46%, 20%);
+
+  &_name{
+    background-color: hsl(246, 80%, 60%);
+    padding: 0.7em;
+    font-size: 2em;
+    line-height: 1.2em;
+
+    &_image{
+      width: 2em;
+      border: 2px solid white;
+      border-radius: 50%;
+      margin-bottom: 0.3em;
+    }
+    &_span{
+      font-size: 0.4em;
+      opacity: 75%;
+      display: block;
+      height: 2em;
+    }
+  }
+}
+
+.activities{
+  background-repeat: no-repeat;
+  background-position:right 10px top -10px;
+  height: 100%;
+}
+
+.activity-Work{
+  background-color: hsl(43, 84%, 65%);
+  background-image: url(/images/icon-work.svg);
+}
+
+.activity-Play{
+  background-color: hsl(195, 74%, 62%);
+  background-image: url(/images/icon-play.svg);
+}
+
+.activity-Study{
+  background-color: hsl(348, 100%, 68%);
+  background-image: url(/images/icon-study.svg);
+}
+
+.activity-Exercise{
+  background-color: hsl(145, 58%, 55%);
+  background-image: url(/images/icon-exercise.svg);
+}
+
+.activity-Social{
+  background-color: hsl(264, 64%, 52%);
+  background-image: url(/images/icon-social.svg);
+}
+
+.activity-SelfCare{
+  background-color: hsl(43, 84%, 65%);
+  background-image: url(/images/icon-self-care.svg);
+}
+
+.test{
+  position: relative;
+  height:80%;
+  top:20%;
+  background-color: hsl(235, 46%, 20%);
+  padding: 1em;
+}

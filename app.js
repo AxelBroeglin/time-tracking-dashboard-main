@@ -14,12 +14,12 @@ fetch("./data.json")
             let title = data[i].title;
             const cardClass = title.split(" ")[0];
             //Adds classes to the cards using their titles
-            card.classList.add('activity-'+cardClass);
+            card.classList.add('activities','activity-'+cardClass);
             //Places the loop at the end of Main
-            document.getElementById('main-container').appendChild(card);
+            document.getElementById('main').appendChild(card);
             //Creates the HTML elements + the looped objects from JSON.
             card.insertAdjacentHTML(`afterbegin`, 
-            '<div class="" id=""><div><h2 class="">' 
+            '<div class="test" id=""><div><h2 class="">' 
             + data[i].title + 
             '</h2><span class="">...</span></div><p class=""><span class="current">' 
             + data[i].timeframes.daily.current +

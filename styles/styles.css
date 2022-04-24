@@ -79,4 +79,100 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+body {
+  background-color: #0f1424;
+  color: white;
+  position: absolute;
+}
+
+#main {
+  position: relative;
+  top: 25vh;
+  left: 10vw;
+  width: 80vw;
+  height: 50vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 1em;
+}
+
+.main_report {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-row-end: 3;
+  grid-column-end: 2;
+  background-color: #1c1f4a;
+}
+
+.main_report_name {
+  background-color: #5847eb;
+  padding: 0.7em;
+  font-size: 2em;
+  line-height: 1.2em;
+}
+
+.main_report_name_image {
+  width: 2em;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-bottom: 0.3em;
+}
+
+.main_report_name_span {
+  font-size: 0.4em;
+  opacity: 75%;
+  display: block;
+  height: 2em;
+}
+
+.activities {
+  background-repeat: no-repeat;
+  background-position: right 10px top -10px;
+  height: 100%;
+}
+
+.activity-Work {
+  background-color: #f1c65b;
+  background-image: url(/images/icon-work.svg);
+}
+
+.activity-Play {
+  background-color: #56c2e6;
+  background-image: url(/images/icon-play.svg);
+}
+
+.activity-Study {
+  background-color: #ff5c7c;
+  background-image: url(/images/icon-study.svg);
+}
+
+.activity-Exercise {
+  background-color: #4acf81;
+  background-image: url(/images/icon-exercise.svg);
+}
+
+.activity-Social {
+  background-color: #7536d3;
+  background-image: url(/images/icon-social.svg);
+}
+
+.activity-SelfCare {
+  background-color: #f1c65b;
+  background-image: url(/images/icon-self-care.svg);
+}
+
+.test {
+  position: relative;
+  height: 80%;
+  top: 20%;
+  background-color: #1c1f4a;
+  padding: 1em;
+}
 /*# sourceMappingURL=styles.css.map */
