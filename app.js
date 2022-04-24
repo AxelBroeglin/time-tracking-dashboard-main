@@ -19,7 +19,7 @@ fetch("./data.json")
             document.getElementById('main').appendChild(card);
             //Creates the HTML elements + the looped objects from JSON.
             card.insertAdjacentHTML(`afterbegin`, 
-            '<div class="test" id=""><div><h2 class="">' 
+            '<div class="content" id=""><div><h2 class="">' 
             + data[i].title + 
             '</h2><span class="">...</span></div><p class=""><span class="current">' 
             + data[i].timeframes.daily.current +

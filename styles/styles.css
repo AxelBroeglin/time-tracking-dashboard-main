@@ -86,6 +86,10 @@ body {
   position: absolute;
 }
 
+#main, .main_report_name, .main_report, .activities, .content {
+  border-radius: 10px;
+}
+
 #main {
   position: relative;
   top: 25vh;
@@ -168,7 +172,7 @@ body {
   background-image: url(/images/icon-self-care.svg);
 }
 
-.test {
+.content {
   position: relative;
   height: 80%;
   top: 20%;
