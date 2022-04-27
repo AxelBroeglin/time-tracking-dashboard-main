@@ -26,11 +26,8 @@ fetch("./data.json")
             '</span>hrs</span><span class="last">Last <span class="card-period"> day </span> <span class="previous-period">- '
             + data[i].timeframes.daily.previous + 
             'hrs</span></span></p></div>');
-        }
-    })
+        };
 
-    //Function that sets an eventlistener to the 3 periods, gets its ID on click, and .innerHTML it to the timecards
-    .then(function(){
         let cardPeriod = document.querySelectorAll('.card-period');
         let reportPeriod = document.querySelectorAll('.report-period');
         let currentPeriod = document.querySelectorAll('.current');
@@ -41,6 +38,7 @@ fetch("./data.json")
             //Retrieves the id
             idElt = period.getAttribute('id');
             reportPeriod.forEach((period) => {
+                //Adds the active class, or removes it
                 period.classList.remove('active');
                 });
                 if (period.classList.contains("active")) {
@@ -50,51 +48,36 @@ fetch("./data.json")
                 period.classList.add("active");
                 }
             
-            //...to pass it as innerHTML
+            //Passes the ID as innerHTML
             //For of to go through the NodeList
             for (let item of cardPeriod) {
                 item.innerHTML = idElt;
                 };
+
+            //renvoie les bonnes valeurs
+            if (idElt == 'day'){
+                currentPeriod.innerHTML = data[i].timeframes.daily.current;
+                console.log(currentPeriod.innerHTML);
+            }
+            else if (idElt == 'week'){
+                currentPeriod.innerHTML = data[i].timeframes.weekly.current;
+                console.log(currentPeriod.innerHTML);
+                console.log(data[i].timeframes.weekly.current);
+            }
+            else {
+                currentPeriod.innerHTML = data[i].timeframes.monthly.current;
+                console.log(currentPeriod.innerHTML);
+                console.log(data[i].timeframes.monthly.current);
+                currentPeriod.innerText = currentMonthlyHours;
+                console.log(currentPeriod);
+            }    
+            console.log(idElt);
             })
         }
+
+
+        let currentDailyHours = data[1].timeframes.daily.current;
+        let currentWeeklyHours = data[2].timeframes.weekly.current;
+        let currentMonthlyHours = data[1].timeframes.monthly.current;
+        console.log(currentWeeklyHours);
     })
-                    
-                    
-
-                    //Retrieves all the span.current
-                    //console.log(currentPeriod);
-                    //idElt va servir a faire correspondre le click sur la période avec les valeurs idoines du fichier json
-                    // let currentDailyHours = data[i].timeframes.daily.current;
-                    // let currentWeeklyHours = data[i].timeframes.weekly.current;
-                    // let currentMonthlyHours = data[i].timeframes.monthly.current;
-                    //console.log(currentWeeklyHours);
-                    //Maintenant il faut faire changer les valeurs par celles amenées du JSON via le click.
-
-
-                        //renvoie les bonnes valeurs
-                        // if (idElt == 'day'){
-                        //     currentPeriod.innerHTML = data[i].timeframes.daily.current;
-                        //     console.log(currentPeriod.innerHTML);
-                        // }
-                        // else if (idElt == 'week'){
-                        //     currentPeriod.innerHTML = data[i].timeframes.weekly.current;
-                        //     console.log(currentPeriod.innerHTML);
-                        //     console.log(data[i].timeframes.weekly.current);
-                        // }
-                        // else {
-                        //     currentPeriod.innerHTML = data[i].timeframes.monthly.current;
-                        //     console.log(currentPeriod.innerHTML);
-                        //     console.log(data[i].timeframes.monthly.current);
-                        //         // currentPeriod.innerText = currentMonthlyHours;
-                        //         // console.log(currentPeriod);
-                        // }   
-           
-
-
-                     //QuerySelectorAll creates a NodeList, not an array. It needs a for of loop to be used
-                        //Isolates periods from each other...
-      
-                // for(let i = 0; i < data.length; i++){ 
-                //     //console.log(data);
-                                   
-                // }
