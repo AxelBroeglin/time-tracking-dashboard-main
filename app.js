@@ -26,32 +26,38 @@ fetch("./data.json")
             '</span>hrs</span><span class="last">Last <span class="card-period"> day </span> <span class="previous-period">- '
             + data[i].timeframes.daily.previous + 
             'hrs</span></span></p></div>');
+        }
+    })
 
-            let cardPeriod = document.querySelectorAll('.card-period');
-            let reportPeriod = document.querySelectorAll('.report-period');
-            let currentPeriod = document.querySelectorAll('.current');
+    //Function that sets an eventlistener to the 3 periods, gets its ID on click, and .innerHTML it to the timecards
+    .then(function(){
+        let cardPeriod = document.querySelectorAll('.card-period');
+        let reportPeriod = document.querySelectorAll('.report-period');
+        let currentPeriod = document.querySelectorAll('.current');
 
-            for(let period of reportPeriod){
-                //to attach an event listener
-                period.addEventListener('click', () => {
-                    //Retrieves the id
-                    idElt = period.getAttribute('id');
-                    reportPeriod.forEach((period) => {
-                        period.classList.remove('active');
-                      });
-                      if (period.classList.contains("active")) {
-                        period.classList.remove("active");
-                      }
-                      else {
-                        period.classList.add("active");
-                      }
-                  
-                    //...to pass it as innerHTML
-                    //For of to go through the NodeList
-                    for (let item of cardPeriod) {
-                        item.innerHTML = idElt;
-                        };
-
+        for(let period of reportPeriod){
+            //to attach an event listener
+            period.addEventListener('click', () => {
+            //Retrieves the id
+            idElt = period.getAttribute('id');
+            reportPeriod.forEach((period) => {
+                period.classList.remove('active');
+                });
+                if (period.classList.contains("active")) {
+                period.classList.remove("active");
+                }
+                else {
+                period.classList.add("active");
+                }
+            
+            //...to pass it as innerHTML
+            //For of to go through the NodeList
+            for (let item of cardPeriod) {
+                item.innerHTML = idElt;
+                };
+            })
+        }
+    })
                     
                     
 
@@ -66,23 +72,23 @@ fetch("./data.json")
 
 
                         //renvoie les bonnes valeurs
-                        if (idElt == 'day'){
-                            currentPeriod.innerHTML = data[i].timeframes.daily.current;
-                            console.log(currentPeriod.innerHTML);
-                        }
-                        else if (idElt == 'week'){
-                            currentPeriod.innerHTML = data[i].timeframes.weekly.current;
-                            console.log(currentPeriod.innerHTML);
-                            console.log(data[i].timeframes.weekly.current);
-                        }
-                        else {
-                            currentPeriod.innerHTML = data[i].timeframes.monthly.current;
-                            console.log(currentPeriod.innerHTML);
-                            console.log(data[i].timeframes.monthly.current);
-                                // currentPeriod.innerText = currentMonthlyHours;
-                                // console.log(currentPeriod);
-                        }   
-                })
+                        // if (idElt == 'day'){
+                        //     currentPeriod.innerHTML = data[i].timeframes.daily.current;
+                        //     console.log(currentPeriod.innerHTML);
+                        // }
+                        // else if (idElt == 'week'){
+                        //     currentPeriod.innerHTML = data[i].timeframes.weekly.current;
+                        //     console.log(currentPeriod.innerHTML);
+                        //     console.log(data[i].timeframes.weekly.current);
+                        // }
+                        // else {
+                        //     currentPeriod.innerHTML = data[i].timeframes.monthly.current;
+                        //     console.log(currentPeriod.innerHTML);
+                        //     console.log(data[i].timeframes.monthly.current);
+                        //         // currentPeriod.innerText = currentMonthlyHours;
+                        //         // console.log(currentPeriod);
+                        // }   
+           
 
 
                      //QuerySelectorAll creates a NodeList, not an array. It needs a for of loop to be used
@@ -92,6 +98,3 @@ fetch("./data.json")
                 //     //console.log(data);
                                    
                 // }
-            }
-        }
-    })
