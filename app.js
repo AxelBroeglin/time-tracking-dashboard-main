@@ -23,9 +23,9 @@ fetch("./data.json")
             + data[i].title + 
             '</h2><span class="">...</span></div><p class="current-hours"><span class="current-hours-count"><span class="current">' 
             + data[i].timeframes.daily.current +
-            '</span>hrs</span><span class="last">Last <span class="card-period"> day </span> <span class="previous-period">- '
+            '</span>hrs</span><span class="last">Last day </span> <span class="previous-period">- '
             + data[i].timeframes.daily.previous + 
-            'hrs</span></span></p></div>');
+            '</span></span></p></div>');
         };
 
         let cardPeriod = document.querySelectorAll('.card-period');
@@ -54,30 +54,37 @@ fetch("./data.json")
                 item.innerHTML = idElt;
                 };
 
-            //renvoie les bonnes valeurs
-            if (idElt == 'day'){
-                currentPeriod.innerHTML = data[i].timeframes.daily.current;
-                console.log(currentPeriod.innerHTML);
-            }
-            else if (idElt == 'week'){
-                currentPeriod.innerHTML = data[i].timeframes.weekly.current;
-                console.log(currentPeriod.innerHTML);
-                console.log(data[i].timeframes.weekly.current);
-            }
-            else {
-                currentPeriod.innerHTML = data[i].timeframes.monthly.current;
-                console.log(currentPeriod.innerHTML);
-                console.log(data[i].timeframes.monthly.current);
-                currentPeriod.innerText = currentMonthlyHours;
-                console.log(currentPeriod);
-            }    
-            console.log(idElt);
+  // Change timeframe onclick
+  let timeframes = document.querySelectorAll('.report-period');
+  timeframes.forEach(timeframe => {
+    timeframe.onclick = () => {
+      let selectedTimeframe = timeframe.textContent.toLowerCase(),
+          allPresent = document.querySelectorAll('.current'),
+          allPrevious = document.querySelectorAll('.last'),
+          prefix;
+      
+          
+      switch(selectedTimeframe) {
+        case 'daily':
+          prefix = 'Yesterday  ';
+          break;
+        case 'weekly':
+          prefix = 'Last week - ';
+          break;
+        default:
+          prefix = 'Last month - ';
+      }
+      
+      allPresent.forEach((present, i) => {
+        present.textContent = data[i].timeframes[selectedTimeframe].current;
+      })
+      allPrevious.forEach((previous, i) => {
+        previous.textContent = prefix + data[i].timeframes.previous;
+      })
+      
+    }
+  })
+  
             })
         }
-
-
-        let currentDailyHours = data[1].timeframes.daily.current;
-        let currentWeeklyHours = data[2].timeframes.weekly.current;
-        let currentMonthlyHours = data[1].timeframes.monthly.current;
-        console.log(currentWeeklyHours);
     })
